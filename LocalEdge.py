@@ -7,27 +7,14 @@ import grpc
 import edge_server_pb2
 import edge_server_pb2_grpc
 import numpy as np
+import Net
 
 HOST_IP = '127.0.0.1'
 PORT= 65121
 
-class EdgeNet(nn.Module):
-    def __init__(self):
-        super(EdgeNet, self).__init__()
-        self.fc1 = nn.Linear(784, 256)
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 64)
 
-    def forward(self, x):
-        x = torch.relu(self.fc1(x))
-        print(f"EdgeNet - fc1 output: {x[0][:5]}")
-        x = torch.relu(self.fc2(x))
-        print(f"EdgeNet - fc2 output: {x[0][:5]}")
-        x = torch.relu(self.fc3(x))
-        print(f"EdgeNet - fc3 output: {x[0][:5]}")
-        return x
 
-edge_net = EdgeNet()
+edge_net = Net.EdgeNet()
 optimizer = optim.SGD(edge_net.parameters(), lr=0.01)
 
 # 反向传播
@@ -38,7 +25,7 @@ def backward():
     print(f"EdgeNet - fc2 gradient: {(edge_net.fc2.weight.grad)[0][:5]}")
     print(f"EdgeNet - fc1 gradient: {(edge_net.fc1.weight.grad)[0][:5]}")
     optimizer.step()
-    print(f"EdgeNet parameters updated")
+    print(f"\nEdgeNet parameters updated\n")
 
 # 假设输入数据为 x
 def loadInputs():  #创建输入数据
