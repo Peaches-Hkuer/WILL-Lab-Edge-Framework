@@ -1,4 +1,5 @@
 # For Test
+# Run LocalEdge and TorchServer in the same computer.
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -8,7 +9,6 @@ import edge_server_pb2_grpc
 import numpy as np
 
 HOST_IP = '127.0.0.1'
-# HOST_IP = '172.20.10.3'
 PORT= 65121
 
 class EdgeNet(nn.Module):
