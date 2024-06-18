@@ -48,7 +48,7 @@ def loadInputs():  #创建输入数据
 #正式开始训练:
 EPOCH = 1
 for epoch in range(EPOCH):
-    print(f"epoch {} start...")
+    print(f"Epoch {epoch} start...")
     TEMP_INPUT = loadInputs()
     print(f"Input to EdgeNet: {TEMP_INPUT[0][:5]}")
     edge_output = edge_net(TEMP_INPUT)
