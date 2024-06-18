@@ -7,8 +7,8 @@ import edge_server_pb2_grpc
 from concurrent import futures
 import numpy as np
 
-# HOST_IP = '127.0.0.1'
-HOST_IP = '172.20.10.2'
+HOST_IP = '127.0.0.1'
+# HOST_IP = '172.20.10.2'
 
 PORT= 65121
 
