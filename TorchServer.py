@@ -52,6 +52,7 @@ class Server(edge_server_pb2_grpc.ServerServicer):
 
 
     def ForwardPass(self, request, context):
+        print("Received request from the edge device")
         edge_output = torch.from_numpy(np.frombuffer(request.data, dtype=np.float32).reshape(1, 64))
         edge_output.requires_grad = True
         print(f"Received edge_output from edge device: {edge_output[0][:5]}")
