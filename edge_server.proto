@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package edge_server;
+
+message Tensor {
+    bytes data = 1;
+}
+
+service Server {
+    rpc ForwardPass (Tensor) returns (Tensor) {}
+}
